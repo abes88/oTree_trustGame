@@ -127,12 +127,12 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    #~ {
-        #~ 'name': 'public_goods',
-        #~ 'display_name': "Public Goods",
-        #~ 'num_demo_participants': 3,
-        #~ 'app_sequence': ['public_goods', 'payment_info'],
-    #~ },
+    {
+        'name': 'big_five',
+        'display_name': "Big Five",
+        'num_demo_participants': 1,
+        'app_sequence': ['big_five'],
+    },
 ]
 
 # anything you put after the below line will override
