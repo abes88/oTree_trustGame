@@ -133,6 +133,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['big_five'],
     },
+    {
+        'name': 'gssas_holtlaury',
+        'display_name': "GSS Attitudinal Survey Questions & Holt/Laury Risk Preferences",
+        'num_demo_participants': 1,
+        'app_sequence': ['gssas_holtlaury'],
+    },
 ]
 
 # anything you put after the below line will override
