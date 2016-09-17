@@ -1,13 +1,100 @@
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
+
 {% block title %}
-    Page title
+    How I am in General
 {% endblock %}
+
+
+{% block styles %}
+<style>
+    li.field-container select {
+        display: inline;
+        margin: 5px;
+        width: 70px;
+    }
+    li.field-container label {
+        font-weight: normal;
+    }
+</style>
+{% endblock %}
+
 
 {% block content %}
+<div id="hidecontent" style="display: none;">
+<div class="row lead">
+    <div class="col-md-12">
+        Here are a number of characteristics that may or may not apply to you. For example,
+        <em>do you you agree that you are someone who likes to spend time with others?</em>
+        Please write a number next to each statement to indicate the extent to which
+        <strong class="text-info">you agree or disagree with that statement.</strong>
+    </div>
+</div>
 
-    {% next_button %}
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tr>
+                {% for level, desc in agree_levels %}
+                <th class="text-center">{{level}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for level, desc in agree_levels %}
+                <td class="text-center">{{desc}}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <ol id="ol-forms-1">
+            {% for field in form %}
+            <li class="field-container big5-field" data-big5FieldNro="{{forloop.counter}}">{{field}} <label>{{field.label}}</label></li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="col-md-6">
+        <ol id="ol-forms-2" start="23">
+        </ol>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+</div>
 {% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function(){
+
+    setTimeout(function(){
+        $("div#hidecontent").show()
+    }, 500);
+
+    $("ol#ol-forms-1 > li.big5-field").each(function(idx, elem){
+        var $elem = $(elem);
+        var fieldNro = parseInt($elem.attr("data-big5FieldNro"));
+        if(fieldNro > 22){
+            $elem.appendTo("ol#ol-forms-2");
+        }
+    });
+
+
+});
+</script>
+{% endblock %}
+
+
 
 
