@@ -1,0 +1,80 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Holt/Laury Risk Preferences
+{% endblock %}
+
+
+{% block styles %}
+<style>
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div style="display: none;" id="hidepage">
+<div class="row">
+    <div class="col-md-12">
+        <p class="text-center lead">
+            Please Choose Option A or Option B for EACH Decision Below
+        </p>
+
+        <p class="text-center text-info">
+            Keep in mind that as you move down the table the chances of higher payoff for
+            tge decision in each column increases
+        </p>
+
+        <table class="table table-hover">
+            <tr>
+                <th>Decision</th>
+                <th>Option A</th>
+                <th>Option B</th>
+            </tr>
+            {% for field in form %}
+            <tr>
+                <th>{{field.label}}</th>
+                <td class="option-a">{{field}}</td>
+                <td class="option-b"></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="text-center">
+            Thank you! You will return to this decision at the end of session.
+            At that time you will choose the cards that determine your earnings.
+        </p>
+
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+
+    setTimeout(function(){
+        $("div#hidepage").show();
+    }, 500);
+
+    $("td.option-a").each(function(idx, elem){
+        var $tda = $(elem);
+        var $tdb = $tda.siblings("td.option-b");
+        var $label = $tda.find("label:last-child").show();
+        $tdb.append($label);
+    });
+
+});
+</script>
+{% endblock %}
