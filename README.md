@@ -161,6 +161,7 @@ Contact chris@otree.org with bug reports.
 * Alexander Schepanovski (https://github.com/Suor/)
 * Alexander Sandukovskiy
 * Som Datye
+* Abraham Chen
 
 ## Docs
 
